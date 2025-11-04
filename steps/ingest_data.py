@@ -1,6 +1,11 @@
 import pandas as pd
 from zenml import step
 import logging
+from zenml.materializers.pandas_materializer import PandasMaterializer
+from pydantic import BaseModel
+
+
+
 
 
 class IngestData:
@@ -14,7 +19,7 @@ class IngestData:
 
 
 @step()
-def ingest_data(data_path: str) -> pd.DataFrame:
+def ingest_data(data_path: str)->pd.DataFrame:
 
     try:
         loader = IngestData(data_path)

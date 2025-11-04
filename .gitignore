@@ -1,4 +1,6 @@
-sentiment_analysis/
+myenv/
 kaggle.json
 pipelines/__pycache__/
 steps/__pycache__/
+Dataset/
+archive (13)/

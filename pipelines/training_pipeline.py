@@ -8,9 +8,8 @@ from steps.model_evaluation import evaluate_model
 @pipeline
 def training_pipeline(csv_file):
     df=ingest_data(csv_file)
-    cleaned_data=clean_data(df)
-    model=train_model(cleaned_data)
-    evaluation=evaluate_model(model)
-    return evaluation
-
+    clean_data(df)
+    train_model(df)
+    evaluate_model(df)
+    
 

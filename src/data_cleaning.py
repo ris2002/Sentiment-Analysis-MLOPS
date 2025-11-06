@@ -97,7 +97,36 @@ class Pre_Process_Strategies:
             raise e
 
 
- 
+'''
+
+Bag of words- It means count how many times each word appears in a document.
+ex-Example:
+
+Document	Text
+D1	"I love dogs"
+D2	"I love cats"
+
+Vocabulary = ["I", "love", "dogs", "cats"]
+
+Doc	I	love	dogs	cats
+D1	1	1	1	0
+D2	1	1	0	1
+
+So each sentence becomes a vector of word counts.
+
+🔸 Problem: common words ("I", "love") appear everywhere — not very informative.
+
+TFIDF-TF-IDF (Term Frequency–Inverse Document Frequency)
+make ccommon words less important and rare words important
+IDF=log(N/(1+n(t)))
+where N = total docs and n(t)=number of docs containing the term
+it gives more weight to unique words
+But doesnt cqpture synonyms.
+We use this in the project because naive bayes and logistic regression do not work properly with word embeddings.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+fit_transform()- learns vocalblury and IDF weights and then it converts into TF-IDF vectors
+transform()-Uses the same vocalblury and TF-IDF vectors from trrainig data aND just transforms the testing data to TF-IDF vectors 
+''' 
 
 
 

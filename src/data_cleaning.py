@@ -88,7 +88,7 @@ class Pre_Process_Strategies:
             X=data.drop(columns=['sentiment'])
             Y= data['sentiment']
             X_train_df, X_test_df, Y_train, Y_test =train_test_split(X, Y, test_size=0.2, random_state=2)#here 0.2 means 20% of taat will be for test.this methhod is used ot split the data into train and test
-            tfid=TfidfVectorizer(max_features=5000,ngram_range=(1,2))
+            tfid=TfidfVectorizer(max_features=5000,ngram_range=(1,2))#max_features means it tells tfidf to only consider top 5000 words, n_grams=(1,2)means it tells it t conasider eeither single words like good,bad or 2 words like not good,nnot bad etc
             X_train=tfid.fit_transform(X_train_df['text']).toarray()
             X_test=tfid.transform(X_test_df['text']).toarray()
             return X_train, X_test, Y_train, Y_test

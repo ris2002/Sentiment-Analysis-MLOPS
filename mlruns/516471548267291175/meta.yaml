@@ -1,0 +1,6 @@
+artifact_location: file:///Users/rishilboddula/Desktop/MLOPS/Sentiment-Analysis-MLOPS/mlruns/516471548267291175
+creation_time: 1763041776391
+experiment_id: '516471548267291175'
+last_update_time: 1763041776391
+lifecycle_stage: active
+name: training_pipeline

@@ -5,7 +5,7 @@ class Model_Config:
         self.model_type='Logistic Regression'
         self.model_param={
             'Logistic Regression':{
-                
+            'solver':'saga','max_iter':100,'n_jobs':-1
             },
             'Naive Bayes':{
 

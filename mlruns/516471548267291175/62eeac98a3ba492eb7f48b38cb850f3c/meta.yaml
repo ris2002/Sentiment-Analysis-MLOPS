@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/rishilboddula/Desktop/MLOPS/Sentiment-Analysis-MLOPS/mlruns/516471548267291175/62eeac98a3ba492eb7f48b38cb850f3c/artifacts
+end_time: 1763044882580
+entry_point_name: ''
+experiment_id: '516471548267291175'
+lifecycle_stage: active
+run_id: 62eeac98a3ba492eb7f48b38cb850f3c
+run_name: training_pipeline-2025_11_13-13_49_35_126009
+run_uuid: 62eeac98a3ba492eb7f48b38cb850f3c
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1763041783352
+status: 3
+tags: []
+user_id: rishilboddula

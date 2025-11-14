@@ -1,8 +1,10 @@
 myenv/
 kaggle.json
-pipelines/__pycache__/
+training_pipelines/__pycache__/
 steps/__pycache__/
 Dataset/
 archive (13)/
 src/__pycache__/
 mlruns/
+deployment_folder/__pycache__/
+tfidf_vectorizer.pkl

@@ -5,7 +5,7 @@ from typing import Tuple
 import logging
 import numpy as np
 from typing_extensions import Annotated
-@step
+@step()
 def clean_data(df: pd.DataFrame) -> Tuple[
     Annotated[np.ndarray, "X_train"],
     Annotated[np.ndarray, "X_test"],

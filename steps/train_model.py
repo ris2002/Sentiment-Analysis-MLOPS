@@ -13,22 +13,24 @@ experiment_tracker=Client().active_stack.experiment_tracker.name
 
 @step(experiment_tracker=experiment_tracker)
 def train_model( X_Train: np.ndarray,Y_Train: pd.DataFrame)->ClassifierMixin:
-                 
+    
+
     
     try:
         config=Model_Config()
         if config.model_type=='Logistic Regression':
+            #zenml automatically sets tracking uri
             model=Logistic_Regression()
+            
             mlflow.sklearn.autolog()
             params=config.model_param[config.model_type]
             trained_model=model.train(X_Train,Y_Train,**params)
+            mlflow.sklearn.log_model(sk_model=trained_model,artifact_path="model",registered_model_name="sentiment_analysis_model")#need to register the model after training it 
+             
             return trained_model
         else:
             ValueError('modeel not assigned')
-
-        
-        
-        
+     
     except Exception as e:  
         logging.error(f"Error in training model: {e}")
         raise e

@@ -9,6 +9,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.feature_extraction.text import TfidfVectorizer
 from typing import Tuple
 from typing_extensions import Annotated
+import pickle
 
 '''
 
@@ -48,12 +49,16 @@ Now in the below steps for feautre engineering we do the following
 
 
 '''
+
+nltk.download('stopwords')
+stop_words=set(stopwords.words('english'))#contains all common words in english
+stemmer=PorterStemmer()
 class Pre_Process_Strategies:
     def handle_data(self,df:pd.DataFrame)->pd.DataFrame:
         try:
-            nltk.download('stopwords')
-            stop_words=set(stopwords.words('english'))
-            stemmer=PorterStemmer()
+            #nltk.download('stopwords')
+           # stop_words=set(stopwords.words('english'))
+           # stemmer=PorterStemmer()
             df.drop(columns='id of the tweet',inplace=True)
             df.drop(columns=['query','user'],inplace=True)
             df.rename(columns={'polarity of tweet�': 'sentiment','date of the tweet': 'date','text of the tweet�': 'text'},inplace=True)
@@ -91,10 +96,42 @@ class Pre_Process_Strategies:
             tfid=TfidfVectorizer(max_features=5000,ngram_range=(1,2))#max_features means it tells tfidf to only consider top 5000 words, n_grams=(1,2)means it tells it t conasider eeither single words like good,bad or 2 words like not good,nnot bad etc
             X_train=tfid.fit_transform(X_train_df['text']).toarray()
             X_test=tfid.transform(X_test_df['text']).toarray()
+            # create a new filepath and open 'tfidf_vectorizer.pkl' 'wb' meams write in binary mode
+            with open('tfidf_vectorizer.pkl','wb') as f:
+                pickle.dump(tfid,f)#writes tfid to the file
+                print("Saved successfully!")
+                           
             return X_train, X_test, Y_train, Y_test
         except Exception as e:
             logging.error(f"Error while dividing data or feature engineering of data: {e}")
             raise e
+    
+    def clean_deployment_text(self,text:str)->np.ndarray:
+        try:
+           
+            text = text.lower()
+            text=re.sub(r'http\S+|www\S+','',text)
+            text=re.sub(r'[^a-z\s]','',text)
+            text=re.sub(r'@\w+','',text)
+            #rb=read binary
+            with open('tfidf_vectorizer.pkl','rb')as f:
+                tfid=pickle.load(f)
+            words=text.split()#splits the string on whitespace by default.
+            words=[stemmer.stem(w) for w in words if w not in stop_words]
+            cleaned_text = " ".join(words)
+            
+            pre_processed_words = tfid.transform([cleaned_text]).toarray()
+            return pre_processed_words
+        except Exception as e:
+            logging.error(f'Error in cleaning the raw text for deployment')
+            raise e
+
+
+
+
+
+
+
 
 
 '''

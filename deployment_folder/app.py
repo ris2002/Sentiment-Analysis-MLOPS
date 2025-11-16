@@ -5,7 +5,12 @@ import mlflow
 import logging
 app=FastAPI()
 cleaning_strategies=Pre_Process_Strategies()
-model = mlflow.pyfunc.load_model("models:/sentiment_analysis_model/2")
+#pulls model  = mlflow.pyfunc.load_model("models:/sentiment_analysis_model/2") from local mlflow tracking directory not the regisstry
+#so alternatively 
+
+model = mlflow.pyfunc.load_model("/app/mlruns/516471548267291175/5aa8c63aac9d467a8ea9818ffaf0e584/artifacts/model")
+#you have to mention the storage loccation ad etc from the yaml file gennerated from trraing and make surre that yyaml file is copied in to docker image
+
 class InputText(BaseModel):
     text:str
 @app.post('/predict')

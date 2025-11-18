@@ -47,20 +47,5 @@ This project demonstrates building and deploying a sentiment analysis model usin
 
 ---
 
-## Project Structure
-sentiment_analysis_mlop/
-├─ data/
-│ ├─ raw/
-│ └─ processed/
-├─ notebooks/
-│ └─ exploratory_analysis.ipynb
-├─ src/
-│ ├─ preprocessing/
-│ │ └─ email_preprocessor.py
-│ ├─ models/
-│ │ └─ sentiment_model.py
-│ ├─ train_sentiment_model.py
-│ └─ evaluate_sentiment_model.py
-├─ requirements.txt
-└─ README.md
+
 

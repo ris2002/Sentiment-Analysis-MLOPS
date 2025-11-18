@@ -1,22 +1,55 @@
-Sentimet Analysis (MLOPS Project)
+Sentiment Analysis (MLOps Project) – Key Learnings
 
-Structure
-CI/CD-Jenkins
-Pipeline Orchestration incl pipeline annd corresponding steps tracking-zenml
-Experiment Tracking and model Registry-MLFLOW
-Deploymennt through fast api.
-Containerization with docker
+Project Overview:
 
-What I have understood from this project
-1]In MLOPS or any other production grade application, it is important to name each file properly and 
-write seperate functions in diffrent files so as to debug easily.
-2]The main thing in a production application is to track the steps,
-experiments and write proper raise error statements to debug easily.
-3]Pipelines are the main part of MLOPS Devops operations. They consist off different funcctions called steps to achheive a common goal.
-4]For MLOPS project it is important to expose fast apis so as to use it where we can.
-5]Docker will containerize the application.That means it isolate the program ad store it in an image and using this image we can run this program
-6]I have also understood logistic Regresiion and how to read its results.
-7]Ilearnt how to regisster mlflow and 
+Built a production-grade Sentiment Analysis system with full MLOps integration.
 
+Features include:
 
-What goal did I acheive
+CI/CD: Jenkins pipeline orchestration
+
+Pipeline & step tracking: ZenML
+
+Experiment tracking & model registry: MLflow
+
+Deployment: FastAPI
+
+Containerization: Docker
+
+Key Learnings & Takeaways
+
+Proper Naming & Modularization
+
+In production-grade projects, it’s crucial to name files clearly and split functions into separate files for easier debugging and maintainability.
+
+Tracking & Debugging
+
+Tracking steps, experiments, and models is essential to reproduce results.
+
+Writing meaningful error messages helps in identifying issues quickly.
+
+Pipeline & Steps
+
+Pipelines are central to MLOps workflows.
+
+Each pipeline consists of multiple steps, each performing a specific task, contributing to a larger goal.
+
+Deployment with FastAPI
+
+Exposing the model as an API makes it easy to integrate with other applications and services.
+
+Containerization with Docker
+
+Docker isolates the application, packages it into an image, and ensures the program runs consistently across environments.
+
+Model Understanding
+
+Learned Logistic Regression for sentiment classification.
+
+Learned how to interpret its metrics and results effectively.
+
+MLflow for Experiment Tracking & Model Registry
+
+Registered models with MLflow to track experiments, versions, and performance metrics.
+
+Learned to store, compare, and deploy models efficiently using MLflow’s registry.
